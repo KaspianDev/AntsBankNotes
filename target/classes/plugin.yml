@@ -1,0 +1,7 @@
+main: uk.co.anttheantster.antsbanknotes.AntsBankNotes
+name: AntsBankNotes
+version: 0.1
+api-version: 1.18
+commands:
+  withdraw:
+  abn:
