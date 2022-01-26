@@ -20,9 +20,14 @@ import java.util.Objects;
 
 public class WithdrawCommand implements CommandExecutor {
 
-    private AntsBankNotes antsBankNotes = AntsBankNotes.getInstance();
+    private AntsBankNotes antsBankNotes;
+    public WithdrawCommand(AntsBankNotes antsBankNotes){
+        this.antsBankNotes = antsBankNotes;
+    }
     private FileConfiguration config = antsBankNotes.getConfig();
     private Economy econ = AntsBankNotes.getEconomy();
+    public static ItemStack bankNote;
+    public static int noteAmount;
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -85,10 +90,12 @@ public class WithdrawCommand implements CommandExecutor {
             moneyItemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
             moneyItemMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
             moneyItem.setItemMeta(moneyItemMeta);
+            bankNote = moneyItem;
+            noteAmount = amount;
 
             try {
                 player.getInventory().addItem(moneyItem);
-                player.sendMessage(ChatColor.GOLD + "You successfully withdrew:" + ChatColor.GREEN + amount);
+                player.sendMessage(ChatColor.GOLD + "You have successfully withdrawn: " + ChatColor.GREEN + amount);
             } catch (Exception e){
                 player.sendMessage(ChatColor.RED + "No Inventory Space!");
                 econ.depositPlayer(player, amount);

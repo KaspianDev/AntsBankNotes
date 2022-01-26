@@ -1,15 +1,19 @@
 package uk.co.anttheantster.antsbanknotes;
 
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import uk.co.anttheantster.antsbanknotes.commands.WithdrawCommand;
+import uk.co.anttheantster.antsbanknotes.listeners.PlayerWithdraw;
 
 public class AntsBankNotes extends JavaPlugin {
 
     private static AntsBankNotes instance;
-
     private static Economy econ = null;
+
+    private PluginManager pl = Bukkit.getPluginManager();
 
     @Override
     public void onEnable() {
@@ -37,7 +41,8 @@ public class AntsBankNotes extends JavaPlugin {
     }
 
     private void registerCommandsAndListeners(){
-        getCommand("withdraw").setExecutor(new WithdrawCommand());
+        getCommand("withdraw").setExecutor(new WithdrawCommand(this));
+        pl.registerEvents(new PlayerWithdraw(), this);
     }
 
     private boolean setupEconomy() {
