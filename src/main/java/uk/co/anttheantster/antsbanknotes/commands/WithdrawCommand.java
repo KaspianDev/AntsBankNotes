@@ -14,17 +14,14 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import uk.co.anttheantster.antsbanknotes.AntsBankNotes;
+import uk.co.anttheantster.antsbanknotes.items.BankNote;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class WithdrawCommand implements CommandExecutor {
+public class WithdrawCommand extends BankNote implements CommandExecutor {
 
-    private AntsBankNotes antsBankNotes;
-    public WithdrawCommand(AntsBankNotes antsBankNotes){
-        this.antsBankNotes = antsBankNotes;
-    }
-    private FileConfiguration config = antsBankNotes.getConfig();
+    private FileConfiguration config = AntsBankNotes.getInstance().getConfig();
     private Economy econ = AntsBankNotes.getEconomy();
     public static ItemStack bankNote;
     public static int noteAmount;
