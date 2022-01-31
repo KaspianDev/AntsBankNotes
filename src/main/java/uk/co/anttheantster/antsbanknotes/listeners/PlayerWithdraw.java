@@ -9,6 +9,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import uk.co.anttheantster.antsbanknotes.AntsBankNotes;
 import uk.co.anttheantster.antsbanknotes.commands.WithdrawCommand;
+import uk.co.anttheantster.antsbanknotes.items.CreateBankNote;
 
 public class PlayerWithdraw extends WithdrawCommand implements Listener {
 
@@ -18,10 +19,11 @@ public class PlayerWithdraw extends WithdrawCommand implements Listener {
 
         if (e.hasItem()){
             Player p = e.getPlayer();
-            if (p.getInventory().getItemInMainHand().equals(WithdrawCommand.bankNote)){
-                econ.depositPlayer(p, WithdrawCommand.noteAmount);
-                p.getInventory().removeItem(WithdrawCommand.bankNote);
-                p.sendMessage(ChatColor.GOLD + "You have successfully deposited: " + ChatColor.GREEN + WithdrawCommand.noteAmount);
+            if (p.getInventory().getItemInMainHand().equals(CreateBankNote.bankNote)){
+                econ.depositPlayer(p, CreateBankNote.noteAmount);
+                p.getInventory().setItemInMainHand(null);
+                p.sendMessage(ChatColor.GOLD + "You have successfully deposited: " + ChatColor.GREEN + CreateBankNote.noteAmount);
+                e.setCancelled(true);
             }
         }
     }
