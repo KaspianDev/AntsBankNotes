@@ -1,0 +1,6 @@
+/workspaces/AntsBankNotes/src/main/java/uk/co/anttheantster/antsbanknotes/commands/WithdrawCommand.java
+/workspaces/AntsBankNotes/src/main/java/uk/co/anttheantster/antsbanknotes/commands/HelpCommand.java
+/workspaces/AntsBankNotes/src/main/java/uk/co/anttheantster/antsbanknotes/items/CreateBankNote.java
+/workspaces/AntsBankNotes/src/main/java/uk/co/anttheantster/antsbanknotes/listeners/PlayerWithdraw.java
+/workspaces/AntsBankNotes/src/main/java/uk/co/anttheantster/antsbanknotes/commands/CommandController.java
+/workspaces/AntsBankNotes/src/main/java/uk/co/anttheantster/antsbanknotes/AntsBankNotes.java

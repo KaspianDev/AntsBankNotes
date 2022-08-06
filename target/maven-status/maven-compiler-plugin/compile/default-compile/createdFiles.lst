@@ -1,0 +1,6 @@
+uk/co/anttheantster/antsbanknotes/AntsBankNotes.class
+uk/co/anttheantster/antsbanknotes/commands/WithdrawCommand.class
+uk/co/anttheantster/antsbanknotes/commands/CommandController.class
+uk/co/anttheantster/antsbanknotes/commands/HelpCommand.class
+uk/co/anttheantster/antsbanknotes/items/CreateBankNote.class
+uk/co/anttheantster/antsbanknotes/listeners/PlayerWithdraw.class
