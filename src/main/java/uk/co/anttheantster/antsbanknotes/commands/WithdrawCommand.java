@@ -17,7 +17,7 @@ public class WithdrawCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (cmd.getName().equalsIgnoreCase("withdraw")){
+        if (cmd.getName().equalsIgnoreCase("wyplac")){
             if (!(sender instanceof Player)){
                 sender.sendMessage(ChatColor.RED + "Only a player can do this command!");
                 return false;
@@ -25,17 +25,17 @@ public class WithdrawCommand implements CommandExecutor {
 
             Player player = (Player) sender;
             if (!player.hasPermission("abn.withdraw")){
-                player.sendMessage("No permission!");
+                player.sendMessage("Brak uprawnień do tej komendy!");
                 return false;
             }
 
             if (args.length < 1){
-               player.sendMessage("You need to specify an amount like so: (/withdraw <Amount>)");
+               player.sendMessage("Musisz podać ilość.");
                return false;
             }
 
             if (args.length > 1){
-                player.sendMessage(ChatColor.RED + "Usage: /withdraw <Amount>");
+                player.sendMessage(ChatColor.RED + "Użycie: /wyplac <ilość>");
                 return false;
             }
             float amount;
@@ -43,12 +43,11 @@ public class WithdrawCommand implements CommandExecutor {
                 amount = Float.parseFloat(args[0]);
 
             } catch (Exception e){
-                player.sendMessage(ChatColor.RED + "Incorrect Usage!");
-                player.sendMessage(ChatColor.RED + "Usage: /withdraw <Amount>");
+                player.sendMessage(ChatColor.RED + "Użycie: /wyplac <ilość>");
                 return false;
             }
             if (amount > econ.getBalance(player)){
-                player.sendMessage(ChatColor.RED + "Insufficient Funds!");
+                player.sendMessage(ChatColor.RED + "Nie masz tyle pieniędzy!");
                 return false;
             }
             econ.withdrawPlayer(player, amount);
@@ -59,7 +58,7 @@ public class WithdrawCommand implements CommandExecutor {
 
             try {
                 player.getInventory().addItem(moneyItem);
-                player.sendMessage(ChatColor.GOLD + "You have successfully withdrawn: " + ChatColor.GREEN + amount);
+                player.sendMessage(ChatColor.GOLD + "Pomyślnie wypłaciłeś/aś: " + ChatColor.GREEN + amount + "$");
             } catch (Exception e){
                 player.sendMessage(ChatColor.RED + "No Inventory Space!");
                 econ.depositPlayer(player, amount);
