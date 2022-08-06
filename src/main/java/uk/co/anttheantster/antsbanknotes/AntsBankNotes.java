@@ -43,7 +43,7 @@ public class AntsBankNotes extends JavaPlugin {
     }
 
     private void registerCommandsAndListeners(){
-        getCommand("withdraw").setExecutor(new WithdrawCommand());
+        getCommand("wyplac").setExecutor(new WithdrawCommand());
         getCommand("abn").setExecutor(new CommandController());
 
 
