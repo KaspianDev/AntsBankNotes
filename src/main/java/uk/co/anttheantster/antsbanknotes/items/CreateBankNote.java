@@ -30,10 +30,9 @@ public class CreateBankNote {
         }
 
         ArrayList<String> lore = new ArrayList<String>();
-        lore.add(ChatColor.AQUA + "Amount: " + ChatColor.GOLD + amount);
-        lore.add(ChatColor.AQUA + "Signed: " + ChatColor.GOLD + name);
+        lore.add(ChatColor.AQUA + "Wartość: " + ChatColor.GREEN + amount + "$");
 
-        moneyItemMeta.setDisplayName(ChatColor.GOLD + "Banknote of: " + ChatColor.GREEN + amount);
+        moneyItemMeta.setDisplayName(ChatColor.GREEN + amount + "$");
         moneyItemMeta.setLore(lore);
         moneyItemMeta.setUnbreakable(true);
         moneyItemMeta.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
